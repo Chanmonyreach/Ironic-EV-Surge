@@ -1,0 +1,574 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background: #222;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#banner {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('Image/Background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#topnav {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: rgba(0, 150, 136, 0.7);
+    backdrop-filter: blur(5px); /* Apply backdrop-filter for blur effect */
+    padding: 1px 50px; /* Adjust padding as needed */
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#topnav img.LOGO {
+    width: 130px; /* Adjust logo size as needed */
+    margin-right: 20px; /* Adjust the margin to move the logo to the right */
+}
+
+#topnav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#topnav ul li {
+    margin-right: 20px; /* Adjust spacing between menu items */
+    padding-top: 80px;
+}
+
+#topnav ul li:last-child {
+    margin-right: 0; /* Remove margin from the last menu item */
+}
+
+#topnav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    position: relative; /* Add position relative to create a positioning context */
+}
+
+#topnav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; /* Adjust this value to change the distance from the letter */
+    left: 0;
+    width: 0; /* Initially, the line is invisible */
+    height: 2px; /* Height of the line */
+    background-color: #fff; /* Color of the line */
+    transition: width 0.3s ease; /* Transition effect for width change */
+}
+#topnav ul li a.active::after {
+    width: 100%; /* Expand the width of the line for the active link */
+}
+
+#topnav ul li a.active {
+    color: #c7c7c7; /* Change the color of the active link */
+}
+
+#topnav ul li a:hover::after {
+    width: 100%; /* When hovering, expand the width of the line to cover the letter */
+}
+
+#topnav ul li ai {
+    margin-right: 10px; 
+}
+
+
+body.translate-background {
+    transform: translateX(-250px);
+    transition: transform 0.5s ease;
+}
+.hide-account-icon {
+    display: none;
+}
+
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.content-section {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    opacity: 0;
+    transition: left 0.2s, opacity 0.2s;
+    backdrop-filter: blur(10px);
+}
+
+.content-section ul{ 
+    margin-top: 50px;
+}
+
+.content-section ul li a {
+    color: #fff;
+    font-size: 2em;
+    position: relative; /* Add position relative to create a positioning context */
+}
+
+.content-section ul li b {
+    margin-left: 50px;
+    color: #fff;
+    font-size: 1.5em;
+    position: relative; /* Add position relative to create a positioning context */
+}
+.content-section h1{
+    margin-left: 250px;
+    color: #fff;
+    font-size: 5em;
+    position: relative; /* Add position relative to create a positioning context */
+}
+
+.chart-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.chart canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.chart a {
+    margin-left: 275px;
+    color: #fff;
+    font-size: 2.5em;
+    position: relative; /* Add position relative to create a positioning context */
+}
+
+.chart b {
+    margin-left: 200px;
+    color: #fff;
+    font-size: 2.5em;
+    position: relative; /* Add position relative to create a positioning context */
+}
+
+#Powers-Gauge-Chart {
+    margin-left: 200px;
+    background-color: #3b3b3b; /* Background color of the gauge */
+    width: 400px; /* Adjust width as needed */
+    height: 400px; /* Adjust height as needed */
+    position: relative;
+    display: block;
+}
+
+#line-Chart {
+    margin-right: 100px;
+    background-color: #3b3b3b; /* Background color of the gauge */
+    width: 800px; /* Adjust width as needed */
+    height: 400px; /* Adjust height as needed */
+    position: relative;
+    display: block;
+}
+
+.content-section.active {
+    left: 0;
+    opacity: 1;
+}
+
+.content-section.left-in {
+    left: -100%;
+    opacity: 0;
+}
+
+.content-section.right-in {
+    left: 100%;
+    opacity: 0;
+}
+
+.content-section.left-out {
+    left: -100%;
+    opacity: 0;
+}
+
+.content-section.right-out {
+    left: 100%;
+    opacity: 0;
+}
+
+#sidenav {
+    width: calc(40%-250px);
+    height: 100vh;
+    position: fixed;
+    right: -300px;
+    top: 0;
+    background: rgba(0, 150, 136, 0.7);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidenav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+#sidenav ul li {
+    margin: 15px 0;
+    position: relative;
+}
+
+#sidenav ul li a {
+    font-size: 1.25em;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+#sidenav ul li a i{
+    margin: 10px;
+}
+
+#sidenav ul li a:hover {
+    color: #333;
+    background-color: #c7c7c7;
+}
+
+#sidenav ul li ai {
+    margin-right: 10px;
+}
+
+#accountBtnTopbar i {
+    display: block;
+    margin: 0 auto;
+    font-size: 1.75em;
+}
+#accountBtnSidebar {
+    width: 20px; /* Adjust the size as needed */
+    position: absolute;
+    top: 1px; /* Adjust the distance from the top */
+    right: 1px; /* Adjust the distance from the right */
+    cursor: pointer; /* Add cursor pointer for better UX */
+}
+
+/* Media Queries */
+
+/* For smaller screens */
+@media screen and (max-width: 1024px) {
+    #topnav {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 120px;
+        background: rgba(0, 150, 136, 0.7);
+        backdrop-filter: blur(5px); /* Apply backdrop-filter for blur effect */
+        padding: 1px 50px; /* Adjust padding as needed */
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    #topnav img.LOGO {
+        width: 130px; /* Adjust logo size as needed */
+        margin-right: 20px; /* Adjust the margin to move the logo to the right */
+    }    
+
+    #topnav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        padding-left:20%;
+        padding-top: 5%;
+    }
+
+    #sidenav ul li a i{
+        font-size: 100%;
+        margin-right: 10%;
+    }
+
+    .content h1 {
+        font-size: xx-large;
+        margin-top: 50%;
+    } 
+
+    .content p {
+        font-size: medium;
+        margin: 20px auto;
+        font-weight: 100;
+        line-height: 25px;
+    }
+
+    .LOGO {
+        width: 20%;
+        position: absolute;
+        top: 4%;
+        left: 10%;
+    }
+
+    #feature {
+        width: auto;
+        padding: 5% 0;
+        background: #fff;
+    }
+
+    .title-text {
+        text-align: center;
+        padding-bottom: 10%;
+    }
+
+    .title-text p {
+        margin: auto;
+        font-size: large;
+        color: #009688;
+        font-weight: bold ;
+    }
+
+    .title-text h1 {
+        margin: auto;
+        font-size: x-large;
+        color: #000;
+        font-weight: bold ;
+    }
+
+    .social-icons {
+        margin-top: 1%;
+        display: flex;
+        justify-content: center;
+        gap: 30px; /* Increase the gap to create more space between icons */
+    }
+
+    .social-icons a {
+        transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+    .social-icons a i {
+        font-size: 1.75em;
+    }
+
+    .social-icons a:hover {
+        transform: scale(1.2); /* Enlarge the icon when hovered */
+    }
+
+    /* Login Form Styles */
+    .form-containerLog {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
+        backdrop-filter: blur(6px); /* Apply blur effect */
+        padding: 40px;
+        width: 80%; /* Adjusted width */
+        max-width: 400px; /* Maximum width */
+        height: auto; /* Adjusted height */
+        border-radius: 10px;
+        z-index: 4;
+    }
+
+    .form-containerLog form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center align form elements */
+    }
+
+    .form-containerLog label, .form-containerLog input, .form-containerLog button {
+        margin: 10px 0;
+    }
+
+    .form-containerLog input, .form-containerLog button {
+        padding: 10px;
+        width: 100%; /* Full width input and button */
+        box-sizing: border-box; /* Include padding and border in width */
+    }
+
+    .input-containerLog {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        margin-bottom: 10px;
+        width: 100%; /* Full width input container */
+    }
+
+    .input-containerLog label {
+        margin-right: 10px;
+    }
+
+    .input-containerLog input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 8px;
+        border-radius: 5px;
+        width: calc(100% - 30px); /* Adjusted width */
+    }
+
+    .input-containerLog i {
+        color: #fff;
+    }
+
+    /* Register Form Styles */
+    .form-containerReg {
+        display: none; /* Initially hidden */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 150, 136, 0.7); /* Semi-transparent background */
+        backdrop-filter: blur(6px); /* Apply blur effect */
+        padding: 40px;
+        width: 80%; /* Adjusted width */
+        max-width: 400px; /* Maximum width */
+        height: auto; /* Adjusted height */
+        border-radius: 10px;
+        z-index: 4;
+    }
+
+    .form-containerReg form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center align form elements */
+    }
+
+    .form-containerReg label, .form-containerReg input, .form-containerReg button {
+        margin: 10px 0;
+    }
+
+    .form-containerReg input, .form-containerReg button {
+        padding: 10px;
+        width: 100%; /* Full width input and button */
+        box-sizing: border-box; /* Include padding and border in width */
+    }
+
+    .input-containerReg {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        margin-bottom: 10px;
+        width: 100%; /* Full width input container */
+    }
+
+    .input-containerReg label {
+        margin-right: 10px;
+    }
+
+    .input-containerReg input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 8px;
+        border-radius: 5px;
+        width: calc(100% - 30px); /* Adjusted width */
+    }
+
+    .input-containerReg i {
+        color: #fff;
+    }
+}
+
+/* For larger screens */
+@media screen and (min-width: 375px) {
+    #topnav {
+        padding: 1px 20px; /* Adjust padding for larger screens */
+    }
+
+    #topnav img.logo {
+        width: 100px; /* Adjust logo size */
+    }
+
+    #sidenav {
+        width: 20%; /* Adjust sidebar width */
+        max-width: 300px; /* Limit maximum width */
+    }
+}
+
+/* Orientation-specific adjustments */
+
+/* Portrait mode */
+@media screen and (orientation: portrait) and (max-width: 1024px){
+        #topnav {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+
+    #topnav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center; /* Center items vertically */
+    }
+
+    #topnav ul li {
+        margin-right: 10%; /* Adjust spacing between menu items */
+        padding-top: 35%;
+    }
+    #sidenav {
+        width: 40%; /* Adjust sidebar width */
+        max-width: none; /* Limit maximum width */
+    }
+    .content {
+        padding: 20px;
+    }
+
+    .form-containerLog, .form-containerReg {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
+/* Landscape mode */
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+    #topnav {
+        display: flex;
+        justify-content: flex-end; /* Align items to the right */
+        align-items: center; /* Center vertically */
+    }
+
+    #topnav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center; /* Center items vertically */
+    }
+
+    #topnav ul li {
+        margin-right: 20px; /* Adjust spacing between menu items */
+        padding-top: 80px;
+    }
+}
+
