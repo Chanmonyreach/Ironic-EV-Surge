@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const password = document.getElementById('newPassword').value;
 
             // Send registration request to server
-            fetch('http://192.168.3.5:8081/register', {
+            fetch('https://faec-203-80-164-104.ngrok-free.app /register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const password = document.getElementById('password').value;
 
             // Send login request to server
-            fetch('http://192.168.3.5:8081/login', {
+            fetch('https://faec-203-80-164-104.ngrok-free.app /login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
