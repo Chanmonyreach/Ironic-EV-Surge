@@ -1,0 +1,780 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background: #222;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#banner {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('Image/Background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#topnav {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: rgba(0, 150, 136, 0.7);
+    backdrop-filter: blur(5px); /* Apply backdrop-filter for blur effect */
+    padding: 1px 50px; /* Adjust padding as needed */
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#topnav img.LOGO {
+    width: 130px; /* Adjust logo size as needed */
+    margin-right: 20px; /* Adjust the margin to move the logo to the right */
+}
+
+#topnav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#topnav ul li {
+    margin-right: 20px; /* Adjust spacing between menu items */
+    padding-top: 80px;
+}
+
+#topnav ul li:last-child {
+    margin-right: 0; /* Remove margin from the last menu item */
+}
+
+#topnav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    position: relative; /* Add position relative to create a positioning context */
+}
+
+#topnav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; /* Adjust this value to change the distance from the letter */
+    left: 0;
+    width: 0; /* Initially, the line is invisible */
+    height: 2px; /* Height of the line */
+    background-color: #fff; /* Color of the line */
+    transition: width 0.3s ease; /* Transition effect for width change */
+}
+#topnav ul li a.active::after {
+    width: 100%; /* Expand the width of the line for the active link */
+}
+
+#topnav ul li a.active {
+    color: #c7c7c7; /* Change the color of the active link */
+}
+
+#topnav ul li a:hover::after {
+    width: 100%; /* When hovering, expand the width of the line to cover the letter */
+}
+
+#topnav ul li ai {
+    margin-right: 10px; 
+}
+
+
+body.translate-background {
+    transform: translateX(-250px);
+    transition: transform 0.5s ease;
+}
+.hide-account-icon {
+    display: none;
+}
+
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    height: 85%;
+    overflow: hidden;
+}
+
+
+.content-section {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%; /* Allow the section to expand naturally */
+    padding: 20px;
+    opacity: 0;
+    transition: left 0.2s, opacity 0.2s;
+    backdrop-filter: blur(10px);
+}
+
+#home h1{
+    color: #fff;
+    font-size: 400%;
+    position: relative; /* Add position relative to create a positioning context */
+    display: flex;
+    flex-direction: column; /* Stack <a> and <b> vertically */
+    align-items: center; /* Center both <a> and <b> horizontally */
+    justify-content: flex-start; /* Align items to the top of the container */
+}
+
+#home a {
+    color: #fff; /* Set text color to white */
+    font-size: 3em; /* Set font size */
+    text-decoration: none; /* Remove underline from links */
+    position: relative; /* Position absolutely within the #home container */
+    bottom: 0; /* Align it to the bottom of the container */
+    left: 0; /* Align it to the left of the container */
+    margin-left: 6.5%; /* Optional: Adjust space from the left edge */
+    margin-bottom: 2%; /* Optional: Adjust space from the bottom edge */
+}
+
+#wallet h1{
+    color: #fff;
+    font-size: 250%;
+    position: relative; /* Add position relative to create a positioning context */
+    display: flex;
+    flex-direction: column; /* Stack <a> and <b> vertically */
+    align-items: center; /* Center both <a> and <b> horizontally */
+    justify-content: flex-start; /* Align items to the top of the container */
+}
+
+.chart-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Example grid setup */
+    grid-gap: 0.1%; /* Desired gap between items */
+    align-items: center;
+    margin-top: 2.5%;
+}
+
+#CurrentCash {
+    width: 20%;
+    height: 30%;
+    background: rgba(0, 150, 136, 0.7); /* Initial background color */
+    position: absolute; /* Absolute positioning relative to the nearest positioned ancestor */
+    top: 25%;
+    right: 48%;
+
+}
+
+ #ChargeDuration {
+    width: 20%;
+    height: 30%;
+    background: rgba(0, 150, 136, 0.7); /* Initial background color */
+    position: absolute; /* Absolute positioning relative to the nearest positioned ancestor */
+    top: 25%;
+    right: 26.5%;
+
+}
+
+#Location{
+    width: 20%;
+    height: 30%;
+    background: rgba(0, 150, 136, 0.7); /* Initial background color */
+    position: absolute; /* Absolute positioning relative to the nearest positioned ancestor */
+    top: 25%;
+    right: 5%;
+}
+
+#icon {
+    position: absolute;  /* Position the element absolutely */
+    top: 0;              /* Align it to the top of the container */
+    left: 0;             /* Align it to the left of the container */
+    margin: 10px;        /* Optional: Adjust the space from the edges */
+    font-size: 3em;      /* Set the font size for the icon */
+    color: #fff;
+}
+
+#CurrentCash a{
+    margin-top: 15%; /* Adjust space between <a> and <b> */
+    margin-left: 15%;
+    font-size: 2em;
+    color: #fff; /* Set the text color */
+    display: block; /* Make <a> a block-level element */
+}
+
+#ChargeDuration a{
+    margin-top: 15%; /* Adjust space between <a> and <b> */
+    margin-left: 15%;
+    font-size: 2em;
+    color: #fff; /* Set the text color */
+    display: block; /* Make <a> a block-level element */
+}
+
+
+#Location a {
+    margin-top: 15%; /* Adjust space between <a> and <b> */
+    margin-left: 20%;
+    font-size: 2em;
+    color: #fff; /* Set the text color */
+    display: block; /* Make <a> a block-level element */
+}
+
+#CurrentCash a i, #ChargeDuration a i, #Location a i {
+    color: #fff; /* Set the icon color */
+}
+
+#CurrentCash b{
+    font-size: 2.2em;
+    color: #fff; /* Set the text color */
+    margin-top: 15%; /* Adjust space between <a> and <b> */
+    margin-left: 35%;
+    text-align: center; /* Center the text inside <b> */
+    width: 100%; /* Ensure it takes the full width of the parent */
+}
+
+#ChargeDuration b{
+    font-size: 2.2em;
+    color: #fff; /* Set the text color */
+    margin-top: 30%; /* Adjust space between <a> and <b> */
+    margin-left: 30%;
+    text-align: center; /* Center the text inside <b> */
+    width: 100%; /* Ensure it takes the full width of the parent */
+}
+
+#Location b {
+    font-size: 2.2em;
+    color: #fff; /* Set the text color */
+    margin-top: 15%; /* Adjust space between <a> and <b> */
+    margin-left: 20%;
+    text-align: center; /* Center the text inside <b> */
+    width: 100%; /* Ensure it takes the full width of the parent */
+}
+
+#Discharge {
+    width: 40%;
+    height: 20%;
+    background: rgba(0, 150, 136, 0.7); /* Initial background color */
+    position: absolute; 
+    bottom: 10%;
+    right: 15%;
+    display: flex;
+    border-radius: 8px; /* Rounded corners */
+    justify-content: center; /* Centers the text horizontally */
+    align-items: center; /* Centers the text vertically */
+    text-align: center; /* Ensures the text is centered */
+    color: white; /* Text color */
+    font-size: 1.2rem; /* Set font size */
+    font-weight: bold; /* Make the text bold */
+    transition: color 0.3s ease-out, transform 0.1s ease-in, background 0.1s ease-in; /* Transition for text color, background, and transform */
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    margin: 10px 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+#Discharge::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    content: '';
+    border-radius: 8px; /* Match button's rounded corners */
+    display: block;
+    width: 0%; /* Start with 0% width */
+    height: 0%; /* Start with 0% height */
+    background-color: gray; /* Set the background color */
+    transition: width 0.3s ease, height 0.3s ease, box-shadow 0.5s ease-out; /* Smooth transition for size and shadow */
+    z-index: -1; /* Behind the button text */
+}
+
+#Discharge:hover {
+    color: #fff; /* Keep text white on hover */
+}
+
+#Discharge:hover::before {
+    width: 100%; /* Expand the width to cover the button */
+    height: 100%; /* Expand the height to cover the button */
+    box-shadow: inset 0 0 0 10em gray; /* Inset shadow expands on hover */
+}
+
+#bill{
+    width: 99%;
+    height: 57.5%;
+    background: rgba(0, 150, 136, 0.7); /* Initial background color */
+    position: absolute; /* Absolute positioning relative to the nearest positioned ancestor */
+    top: 2.5%;
+   left: 0.5%;
+}
+
+#bill a{
+    display: block;
+    margin-top: 5%;
+    margin-left: 20%;
+    font-size: 5em;
+    color: #fff; /* Set the text color */
+    display: block; /* Make <a> a block-level element */
+}
+
+#bill b{
+    display: block;
+    margin-top: -5.5%;
+    margin-left: 0%;
+    font-size: 5em;
+    color: #fff; /* Set the text color */
+    text-align: center; /* Center the text inside <b> */
+    width: 100%; /* Ensure it takes the full width of the parent */
+}
+
+.chart canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.chart a {
+    margin-left: 25.5%;
+    color: #fff;
+    font-size: 250%;
+    position: relative; /* Add position relative to create a positioning context */
+}
+
+.chart b {
+    margin-left: 20.5%;
+    color: #fff;
+    font-size: 250%;
+    position: relative; /* Add position relative to create a positioning context */
+}
+
+#Powers-Gauge-Chart {
+    /* margin-left: 10%; */
+    background: #3b3b3b; /* Background color of the gauge */
+    width: 25%; /* Adjust width as needed */
+    height: 25%; /* Adjust height as needed */
+    position: relative;
+    display: block;
+    border-radius: 50%; /* Makes the shape a circle */
+    /* top: 200px; */
+    left: 3%;
+}
+
+
+#line-Chart {
+    margin-right: 15%;
+    background-color: #3b3b3b; /* Background color of the gauge */
+    width: 50%; /* Adjust width as needed */
+    height: 20%; /* Adjust height as needed */
+    position: relative;
+    display: block;
+}
+
+.content-section.active {
+    left: 0;
+    opacity: 1;
+}
+
+.content-section.left-in {
+    left: -100%;
+    opacity: 0;
+}
+
+.content-section.right-in {
+    left: 100%;
+    opacity: 0;
+}
+
+.content-section.left-out {
+    left: -100%;
+    opacity: 0;
+}
+
+.content-section.right-out {
+    left: 100%;
+    opacity: 0;
+}
+
+#sidenav {
+    width: calc(40%-250px);
+    height: 100vh;
+    position: fixed;
+    right: -300px;
+    top: 0;
+    background: rgba(0, 150, 136, 0.7);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidenav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+#sidenav ul li {
+    margin: 15px 0;
+    position: relative;
+}
+
+#sidenav ul li a {
+    font-size: 1.25em;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+#sidenav ul li a i{
+    margin: 10px;
+}
+
+#sidenav ul li a:hover {
+    color: #333;
+    background-color: #c7c7c7;
+}
+
+#sidenav ul li ai {
+    margin-right: 10px;
+}
+
+#accountBtnTopbar i {
+    display: block;
+    margin: 0 auto;
+    font-size: 1.75em;
+}
+#accountBtnSidebar {
+    width: 20px; /* Adjust the size as needed */
+    position: absolute;
+    top: 1px; /* Adjust the distance from the top */
+    right: 1px; /* Adjust the distance from the right */
+    cursor: pointer; /* Add cursor pointer for better UX */
+}
+
+/* Media Queries */
+
+/* For smaller screens */
+@media screen and (max-width: 1024px) {
+    #topnav {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 120px;
+        background: rgba(0, 150, 136, 0.7);
+        backdrop-filter: blur(5px); /* Apply backdrop-filter for blur effect */
+        padding: 1px 50px; /* Adjust padding as needed */
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    #topnav img.LOGO {
+        width: 130px; /* Adjust logo size as needed */
+        margin-right: 20px; /* Adjust the margin to move the logo to the right */
+    }    
+
+    #topnav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        padding-left:20%;
+        padding-top: 5%;
+    }
+
+    #sidenav ul li a i{
+        font-size: 100%;
+        margin-right: 10%;
+    }
+    .LOGO {
+        width: 20%;
+        position: absolute;
+        top: 4%;
+        left: 10%;
+    }
+
+    .content-section {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        opacity: 0;
+        transition: left 0.2s, opacity 0.2s;
+        backdrop-filter: blur(10px);
+    }
+
+}
+
+/* For larger screens */
+@media screen and (min-width: 375px) {
+    #topnav {
+        padding: 1px 20px; /* Adjust padding for larger screens */
+    }
+
+    #topnav img.logo {
+        width: 100px; /* Adjust logo size */
+    }
+
+    #sidenav {
+        width: 20%; /* Adjust sidebar width */
+        max-width: 300px; /* Limit maximum width */
+    }
+}
+
+/* Orientation-specific adjustments */
+
+/* Portrait mode */
+@media screen and (orientation: portrait) and (max-width: 1024px){
+        #topnav {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+
+    #topnav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center; /* Center items vertically */
+    }
+
+    #topnav ul li {
+        margin-right: 10%; /* Adjust spacing between menu items */
+        padding-top: 35%;
+    }
+    #sidenav {
+        width: 40%; /* Adjust sidebar width */
+        max-width: none; /* Limit maximum width */
+    }
+
+    .content-section {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        opacity: 0;
+        transition: left 0.2s, opacity 0.2s;
+        backdrop-filter: blur(10px);
+    }
+
+    .content-section h1{
+        margin-left: 15%;
+        color: #fff;
+        font-size: 158%;
+        position: relative; /* Add position relative to create a positioning context */
+    }
+
+    .content-section ul {
+        list-style: none; /* Remove default list styling */
+        padding: 0; /* Remove default padding */
+        margin: 0; /* Remove default margin */
+    }
+
+    .content-section ul li {
+        margin-top: 5%; /* Add some space between list items, adjust as needed */
+    }
+
+    .content-section ul li a {
+        list-style: none;
+        color: #fff;
+        font-size: 158%;
+        text-decoration: none; /* Remove underline from links */
+        position: relative; /* Add position relative to create a positioning context */
+    }
+
+    .content-section ul li b {
+        margin-left: 2.5%;
+        color: #fff;
+        font-size:100%;
+        position: relative; /* Add position relative to create a positioning context */
+    }
+
+    .chart-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Example grid setup */
+        grid-gap: 5%; /* Desired gap between items */
+        align-items: center;
+        margin-top: 5%;
+    }
+
+
+    .chart canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .chart a {
+        margin-left: 27.5%;
+        color: #fff;
+        font-size: 100%;
+        position: relative; /* Add position relative to create a positioning context */
+    }
+
+    .chart b {
+        margin-left: 20%;
+        color: #fff;
+        font-size: 100%;
+        position: relative; /* Add position relative to create a positioning context */
+    }
+
+    #Powers-Gauge-Chart {
+        margin-left: 20%;
+        background-color: #3b3b3b; /* Background color of the gauge */
+        width: 50%; /* Adjust width as needed */
+        height: 50%; /* Adjust height as needed */
+        position: relative;
+        display: block;
+    }
+
+    #line-Chart {
+        margin-right: 1%;
+        background-color: #3b3b3b; /* Background color of the gauge */
+        width: 80%; /* Adjust width as needed */
+        height: 50%; /* Adjust height as needed */
+        position: relative;
+        display: block;
+    }
+}
+
+/* Landscape mode */
+@media screen and (orientation: landscape) and (max-width: 1024px) {
+    #topnav {
+        display: flex;
+        justify-content: flex-end; /* Align items to the right */
+        align-items: center; /* Center vertically */
+    }
+
+    #topnav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center; /* Center items vertically */
+    }
+
+    #topnav ul li {
+        margin-right: 20px; /* Adjust spacing between menu items */
+        padding-top: 80px;
+    }
+
+    .content-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100vh; /* Adjust the height as needed to increase scroll distance */
+        overflow: auto; /* Enable scrolling for content that exceeds viewport height */
+    }
+
+    .content-section {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: auto; /* Allow the section to expand naturally */
+        padding: 20px;
+        opacity: 0;
+        transition: left 0.2s, opacity 0.2s;
+        backdrop-filter: blur(10px);
+    }
+
+    .content-section h1{
+        margin-left: 25%;
+        color: #fff;
+        font-size: 250%;
+        position: relative; /* Add position relative to create a positioning context */
+    }
+
+    .content-section ul {
+        list-style: none; /* Remove default list styling */
+        padding: 0; /* Remove default padding */
+        margin: 0; /* Remove default margin */
+    }
+
+    .content-section ul li {
+        margin-top: 1%; /* Add some space between list items, adjust as needed */
+    }
+
+    .content-section ul li a {
+        list-style: none;
+        color: #fff;
+        font-size: 100%;
+        text-decoration: none; /* Remove underline from links */
+        position: relative; /* Add position relative to create a positioning context */
+    }
+
+    .content-section ul li b {
+        margin-left: 2.5%;
+        color: #fff;
+        font-size:100%;
+        position: relative; /* Add position relative to create a positioning context */
+    }
+
+    .chart-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Example grid setup */
+        grid-gap: 5%; /* Desired gap between items */
+        align-items: center;
+        margin-top: 5%;
+    }
+
+
+    .chart canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .chart a {
+        margin-left: 27.5%;
+        color: #fff;
+        font-size: 100%;
+        position: relative; /* Add position relative to create a positioning context */
+    }
+
+    .chart b {
+        margin-left: 20%;
+        color: #fff;
+        font-size: 100%;
+        position: relative; /* Add position relative to create a positioning context */
+    }
+
+    #Powers-Gauge-Chart {
+        margin-left: 20%;
+        background-color: #3b3b3b; /* Background color of the gauge */
+        width: 50%; /* Adjust width as needed */
+        height: 50%; /* Adjust height as needed */
+        position: relative;
+        display: block;
+    }
+
+    #line-Chart {
+        margin-right: 1%;
+        background-color: #3b3b3b; /* Background color of the gauge */
+        width: 80%; /* Adjust width as needed */
+        height: 50%; /* Adjust height as needed */
+        position: relative;
+        display: block;
+    }
+}
+
